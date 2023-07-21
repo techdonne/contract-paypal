@@ -44,7 +44,7 @@ public class Contract {
         return installments;
     }
 
-    public void addInstalment(Installment installment){
+    public void addInstallment(Installment installment){
         installments.add(installment);
     }
     

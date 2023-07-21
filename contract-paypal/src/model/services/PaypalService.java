@@ -8,7 +8,7 @@ public class PaypalService implements OlinePaymentService{
     }
 
     @Override
-    public Double insterest(Double amount, Double months) {
+    public Double insterest(Double amount, Integer months) {
         return amount * 0.1f * months;
     }
     
