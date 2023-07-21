@@ -13,15 +13,17 @@ public class ContractService {
     }
     
     public void processContract(Contract contract, Integer months){
-        double amount = contract.getTotalValue() / months; ;
+        double basicQuota = contract.getTotalValue() / months; ;
         
         for (int i = 1; i <= months; i++){
-            double interest = amount + paymentService.insterest(amount, i);
-            double paymentFee = interest + paymentService.paymentFee(interest);
+            double interest = paymentService.insterest(basicQuota , i);
+            double fee = paymentService.paymentFee(interest + basicQuota);
+            
+            double quota = basicQuota + fee + interest;
             
             LocalDate dueDate = contract.getDate().plusMonths(i);
             
-            Installment installment = new Installment(dueDate, paymentFee);
+            Installment installment = new Installment(dueDate, quota);
             
             contract.addInstallment(installment);
         }
