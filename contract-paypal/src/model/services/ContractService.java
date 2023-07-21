@@ -13,9 +13,9 @@ public class ContractService {
     }
     
     public void processContract(Contract contract, Integer months){
-        double amount = contract.getTotalValue() / months; 
+        double amount = contract.getTotalValue() / months; ;
         
-        for (int i = 1; i < months; i++){
+        for (int i = 1; i <= months; i++){
             double interest = amount + paymentService.insterest(amount, i);
             double paymentFee = interest + paymentService.paymentFee(interest);
             
